@@ -36,12 +36,38 @@ devtools::install_github("andypicke/earthquaker")
 ### Get dataframe of earthquakes for a 2 day period:
 
 ```{r example}
+
 library(earthquaker)
+library(dplyr)
 
 df <- get_earthquakes(starttime = "2024-06-25", endtime = "2024-06-27")
 
 head(df)
 ```
+
+### Get earthquakes since 2020 with *orange* [PAGER](https://earthquake.usgs.gov/data/pager/) alert statuses:
+```{r}
+
+df <- get_earthquakes(starttime = "2020-01-01", alert_level = "orange")
+
+head(df)
+
+```
+
+
+### Get all earthquakes in 2024 with magnitudes greater than 5:
+
+```{r}
+
+df <- get_earthquakes(starttime = "2024-01-01", min_magnitude = 5)
+
+
+df |>
+  select(time, mag, place) |>
+  head(10)
+
+```
+
 
 ### Get all earthquakes in 2024 in (approximately) Colorado, specfying location bounds with the *rectangle* parameter.
 

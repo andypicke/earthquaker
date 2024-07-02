@@ -28,7 +28,20 @@ devtools::install_github("andypicke/earthquaker")
 ### Get dataframe of earthquakes for a 2 day period:
 
 ``` r
+
 library(earthquaker)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+```
+
+``` r
 
 df <- get_earthquakes(starttime = "2024-06-25", endtime = "2024-06-27")
 
@@ -46,6 +59,53 @@ head(df)
 #> #   place <chr>, type <chr>, horizontalError <dbl>, depthError <dbl>,
 #> #   magError <dbl>, magNst <dbl>, status <chr>, locationSource <chr>,
 #> #   magSource <chr>
+```
+
+### Get earthquakes since 2020 with *orange* [PAGER](https://earthquake.usgs.gov/data/pager/) alert statuses:
+
+``` r
+
+df <- get_earthquakes(starttime = "2020-01-01", alert_level = "orange")
+
+head(df)
+#> # A tibble: 6 × 22
+#>   time                latitude longitude depth   mag magType   nst   gap   dmin
+#>   <dttm>                 <dbl>     <dbl> <dbl> <dbl> <chr>   <dbl> <dbl>  <dbl>
+#> 1 2023-10-15 03:36:00    34.7       62.1   9     6.3 mww       125    21 5.71  
+#> 2 2023-10-07 07:12:49    34.5       61.9   8     6.3 mww       244    43 5.90  
+#> 3 2023-10-07 06:41:03    34.6       61.9  14     6.3 mww       279    43 5.87  
+#> 4 2023-08-17 17:17:17     4.26     -73.5  10     5.6 mww       101    77 0.982 
+#> 5 2023-03-24 03:16:56    38.5       44.9  11     5.6 mww       101    40 1.18  
+#> 6 2022-12-20 10:34:24    40.5     -124.   17.9   6.4 mw         38   214 0.0818
+#> # ℹ 13 more variables: rms <dbl>, net <chr>, id <chr>, updated <dttm>,
+#> #   place <chr>, type <chr>, horizontalError <dbl>, depthError <dbl>,
+#> #   magError <dbl>, magNst <dbl>, status <chr>, locationSource <chr>,
+#> #   magSource <chr>
+```
+
+### Get all earthquakes in 2024 with magnitudes greater than 5:
+
+``` r
+
+df <- get_earthquakes(starttime = "2024-01-01", min_magnitude = 5)
+
+
+df |>
+  select(time, mag, place) |>
+  head(10)
+#> # A tibble: 10 × 3
+#>    time                  mag place                                         
+#>    <dttm>              <dbl> <chr>                                         
+#>  1 2024-07-01 22:44:53   5.3 Bonin Islands, Japan region                   
+#>  2 2024-07-01 10:16:23   5   198 km SE of Kokopo, Papua New Guinea         
+#>  3 2024-07-01 05:12:03   5   149 km ESE of Saipan, Northern Mariana Islands
+#>  4 2024-07-01 02:38:03   5.1 Balleny Islands region                        
+#>  5 2024-06-30 18:23:20   5.2 Maug Islands region, Northern Mariana Islands 
+#>  6 2024-06-30 16:06:29   5.2 239 km SSW of Singaparna, Indonesia           
+#>  7 2024-06-29 16:38:46   5.6 Bouvet Island region                          
+#>  8 2024-06-29 11:10:32   5   62 km W of Atka, Alaska                       
+#>  9 2024-06-29 07:22:53   5.3 41 km S of Atiquipa, Peru                     
+#> 10 2024-06-29 07:05:33   6.1 42 km SSW of Atiquipa, Peru
 ```
 
 ### Get all earthquakes in 2024 in (approximately) Colorado, specfying location bounds with the *rectangle* parameter.
