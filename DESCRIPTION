@@ -1,10 +1,10 @@
 Package: earthquaker
-Title: What the Package Does (One Line, Title Case)
+Title: R API Wrapper to Retrieve Earthquake Data from the USGS API
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Andy", "Pickering", , "andypicke@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: R API Wrapper to Retrieve Earthquake Data from the USGS API
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
