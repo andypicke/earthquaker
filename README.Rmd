@@ -1,0 +1,43 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# earthquaker
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of earthquaker is to provide R functions to retrieve earthquake data from the [USGS API](https://earthquake.usgs.gov/fdsnws/event/1/)
+
+## Installation
+
+You can install the development version of earthquaker from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("andypicke/earthquaker")
+```
+
+## Example
+
+Get dataframe of earthquakes for a 2 day period:
+
+```{r example}
+library(earthquaker)
+
+df <- get_earthquakes(starttime = "2024-06-25", endtime = "2024-06-27")
+
+head(df)
+```
+
