@@ -49,5 +49,7 @@ head(df)
 
 df <- get_earthquakes(starttime = "2024-01-01", rectangle = c(37, -110, 41, -101))
 
+head(df)
+
 ```
 

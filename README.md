@@ -53,4 +53,19 @@ head(df)
 ``` r
 
 df <- get_earthquakes(starttime = "2024-01-01", rectangle = c(37, -110, 41, -101))
+
+head(df)
+#> # A tibble: 6 × 22
+#>   time                latitude longitude depth   mag magType   nst   gap  dmin
+#>   <dttm>                 <dbl>     <dbl> <dbl> <dbl> <chr>   <dbl> <dbl> <dbl>
+#> 1 2024-06-11 18:04:11     40.6     -108.  5.52   2.6 ml         26    55 0.481
+#> 2 2024-06-04 21:51:19     37.3     -105.  3.21   1.9 ml         13    71 0.193
+#> 3 2024-06-03 22:29:25     37.0     -105.  7.07   2   ml         13    85 0.167
+#> 4 2024-05-28 15:06:41     37.3     -104.  5      1.2 ml          7   137 0.156
+#> 5 2024-05-16 22:19:41     37.2     -105.  5      0.8 ml          7    99 0.099
+#> 6 2024-05-16 10:07:20     37.0     -105.  3.01   2.2 ml         13    85 0.163
+#> # ℹ 13 more variables: rms <dbl>, net <chr>, id <chr>, updated <dttm>,
+#> #   place <chr>, type <chr>, horizontalError <dbl>, depthError <dbl>,
+#> #   magError <dbl>, magNst <dbl>, status <chr>, locationSource <chr>,
+#> #   magSource <chr>
 ```
