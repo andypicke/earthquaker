@@ -6,19 +6,25 @@
 \usage{
 get_earthquakes(
   format = "csv",
-  starttime = "2024-05-01",
-  endtime = "2024-05-02"
+  starttime = Sys.Date() - 15,
+  endtime = Sys.Date(),
+  min_magnitude = 0,
+  alert_level = c(NA, "green", "yellow", "orange", "red")
 )
 }
 \arguments{
 \item{format}{Format to return. Default is csv}
 
-\item{starttime}{Starting date/time (yyyy-mm-dd)}
+\item{starttime}{Starting date/time in yyyy-mm-dd format (default = 15 days ago)}
 
-\item{endtime}{Ending date/time (yyyy-mm-dd)}
+\item{endtime}{Ending date/time in yyyy-mm-dd format (default = today)}
+
+\item{min_magnitude}{Minimum magnitude (default = 0)}
+
+\item{alert_level}{(optional) PAGER alert level. c(NA, "green", "yellow", "orange", "red")}
 }
 \value{
-df Dataframe of requested earthquakes data
+df Dataframe of earthquakes data with requested parameters.
 }
 \description{
 Retrieve earthquake data from USGS API
