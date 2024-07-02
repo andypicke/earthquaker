@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Andy", "Pickering", , "andypicke@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: R API Wrapper to Retrieve Earthquake Data from the USGS API
+Description: R API Wrapper to Retrieve Earthquake Data from the USGS API.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
