@@ -42,6 +42,11 @@ get_earthquakes <- function(format = "csv",
   # send the request
   resp <- httr::GET(req_url, httr::user_agent("earthquaker (https://github.com/andypicke/earthquaker)"))
 
+  # check if successful response code returned
+  if (resp$status_code != 200) {
+    stop(paste("API returned not 200 status code: ", resp$status_code))
+  }
+
   # parse the request
   resp_parsed <- httr::content(resp, as = "text")
 
