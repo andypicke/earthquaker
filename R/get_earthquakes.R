@@ -40,7 +40,7 @@ get_earthquakes <- function(format = "csv",
   req_url <- paste0(base_url, "query", params_str)
 
   # send the request
-  resp <- httr::GET(req_url)
+  resp <- httr::GET(req_url, httr::user_agent("earthquaker (https://github.com/andypicke/earthquaker)"))
 
   # parse the request
   resp_parsed <- httr::content(resp, as = "text")
