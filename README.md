@@ -23,9 +23,9 @@ You can install the development version of earthquaker from
 devtools::install_github("andypicke/earthquaker")
 ```
 
-## Example
+## Examples
 
-Get dataframe of earthquakes for a 2 day period:
+### Get dataframe of earthquakes for a 2 day period:
 
 ``` r
 library(earthquaker)
@@ -46,4 +46,11 @@ head(df)
 #> #   place <chr>, type <chr>, horizontalError <dbl>, depthError <dbl>,
 #> #   magError <dbl>, magNst <dbl>, status <chr>, locationSource <chr>,
 #> #   magSource <chr>
+```
+
+### Get all earthquakes in 2024 in (approximately) Colorado, specfying location bounds with the *rectangle* parameter.
+
+``` r
+
+df <- get_earthquakes(starttime = "2024-01-01", rectangle = c(37, -110, 41, -101))
 ```

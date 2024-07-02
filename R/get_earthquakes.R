@@ -4,6 +4,7 @@
 #' @param endtime Ending date/time in yyyy-mm-dd format (default = today)
 #' @param min_magnitude Minimum magnitude (default = 0)
 #' @param alert_level (optional) PAGER alert level. c(NA, "green", "yellow", "orange", "red")
+#' @param rectangle Bounding box (dec degrees) to limit results to c(minlat, minlon, maxlat, maxlon)
 #' @return df Dataframe of earthquakes data with requested parameters.
 #' @export
 #'
@@ -11,7 +12,8 @@ get_earthquakes <- function(format = "csv",
                             starttime = Sys.Date() - 15,
                             endtime = Sys.Date(),
                             min_magnitude = 0,
-                            alert_level = c(NA, "green", "yellow", "orange", "red")){
+                            alert_level = c(NA, "green", "yellow", "orange", "red"),
+                            rectangle = c(-90, -180, 90, 180)){
 
   # check if input is valid
   alert_level <- match.arg(alert_level)
@@ -21,7 +23,11 @@ get_earthquakes <- function(format = "csv",
   params_str <- paste0("?format=", format,
                        "&starttime=",starttime,
                        "&endtime=", endtime,
-                       "&minmagnitude=", min_magnitude)
+                       "&minmagnitude=", min_magnitude,
+                       "&minlatitude=", rectangle[1],
+                       "&minlongitude=", rectangle[2],
+                       "&maxlatitude=", rectangle[3],
+                       "&maxlongitude=", rectangle[4])
 
   if (!is.na(alert_level)) {
     params_str <- paste0(params_str, "&alertlevel=", alert_level)

@@ -9,7 +9,8 @@ get_earthquakes(
   starttime = Sys.Date() - 15,
   endtime = Sys.Date(),
   min_magnitude = 0,
-  alert_level = c(NA, "green", "yellow", "orange", "red")
+  alert_level = c(NA, "green", "yellow", "orange", "red"),
+  rectangle = c(-90, -180, 90, 180)
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ get_earthquakes(
 \item{min_magnitude}{Minimum magnitude (default = 0)}
 
 \item{alert_level}{(optional) PAGER alert level. c(NA, "green", "yellow", "orange", "red")}
+
+\item{rectangle}{Bounding box (dec degrees) to limit results to c(minlat, minlon, maxlat, maxlon)}
 }
 \value{
 df Dataframe of earthquakes data with requested parameters.
