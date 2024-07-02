@@ -4,7 +4,21 @@
 \alias{get_earthquakes}
 \title{Retrieve earthquake data from USGS API}
 \usage{
-get_earthquakes(format = "csv")
+get_earthquakes(
+  format = "csv",
+  starttime = "2024-05-01",
+  endtime = "2024-05-02"
+)
+}
+\arguments{
+\item{format}{Format to return. Default is csv}
+
+\item{starttime}{Starting date/time (yyyy-mm-dd)}
+
+\item{endtime}{Ending date/time (yyyy-mm-dd)}
+}
+\value{
+df Dataframe of requested earthquakes data
 }
 \description{
 Retrieve earthquake data from USGS API
